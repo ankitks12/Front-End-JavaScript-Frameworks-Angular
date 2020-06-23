@@ -20,6 +20,7 @@
           </p>
         </mat-card-content>
         <mat-card-actions>
+          <button mat-button (click)="goBack()">BACK</button>
           <button mat-button>LIKE</button>
           <button mat-button>SHARE</button>
         </mat-card-actions>
@@ -30,12 +31,8 @@
   <div fxFlex="40">
     <div fx Flex *ngIf="dish">
       <h3>Comments</h3>
-      <mat-list role="list">
-        <mat-list-item ><div>{{dish.comments[0].comment}}<br>{{dish.comments[0].rating}} Stars<br>--{{dish.comments[0].author}} {{dish.comments[0].date | date}}</div></mat-list-item>
-        <mat-list-item ><div>{{dish.comments[1].comment}}<br>{{dish.comments[1].rating}} Stars<br>--{{dish.comments[1].author}} {{dish.comments[1].date | date}}</div></mat-list-item>
-        <mat-list-item ><div>{{dish.comments[2].comment}}<br>{{dish.comments[2].rating}} Stars<br>--{{dish.comments[2].author}} {{dish.comments[2].date | date}}</div></mat-list-item>
-        <mat-list-item ><div>{{dish.comments[3].comment}}<br>{{dish.comments[3].rating}} Stars<br>--{{dish.comments[3].author}} {{dish.comments[3].date | date}}</div></mat-list-item>
-        <mat-list-item ><div>{{dish.comments[4].comment}}<br>{{dish.comments[4].rating}} Stars<br>--{{dish.comments[4].author}} {{dish.comments[4].date | date}}</div></mat-list-item>
+      <mat-list role="list" *ngFor="let d of dish.comments">
+        <mat-list-item ><div>{{d.comment}}<br>{{d.rating}} Stars<br>--{{d.author}} {{d.date | date}}</div></mat-list-item>
       </mat-list>
     </div>
   </div>
