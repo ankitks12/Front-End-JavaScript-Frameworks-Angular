@@ -54,19 +54,25 @@
   </div>
 
 
-  <div fxFlex>
+  <div fxFlex >
     <h2>Corporate Leadership</h2>
-    <mat-list role="list" *ngFor="let leader of leaders">
-      <mat-list-item>
-        <div fxLayout="row">
-          <div fxFlex="10"><img src={{leader.image}} alt="{{leader.name}}"></div>
-          <div fxFlex>
-            {{leader.name}} {{leader.abbr}}<br>
-            {{leader.designation}}<br>
-            {{leader.description}}
+    <div *ngIf="leaders">
+      <mat-list role="list" *ngFor="let leader of leaders">
+        <mat-list-item>
+          <div fxLayout="row">
+            <div fxFlex="10"><img src={{leader.image}} alt="{{leader.name}}"></div>
+            <div fxFlex>
+              {{leader.name}} {{leader.abbr}}<br>
+              {{leader.designation}}<br>
+              {{leader.description}}
+            </div>
           </div>
-        </div>
-      </mat-list-item>
-    </mat-list>
+        </mat-list-item>
+      </mat-list>
+    </div>
   </div>
+  <div fxFlex [hidden]="leaders">  <!--if dishes is not null, then this div will be hidden. If dishes is null, then this div will be shown.-->
+    <mat-spinner></mat-spinner> <h4>Loding...  Please wait</h4>
+  </div>
+
 </div>
