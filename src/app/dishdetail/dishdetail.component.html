@@ -42,6 +42,24 @@
         <mat-list-item ><div>{{d.comment}}<br>{{d.rating}} Stars<br>--{{d.author}} {{d.date | date}}</div></mat-list-item>
       </mat-list>
     </div>
+    <p *ngIf="!commentForm.invalid">{{commentForm.value.comment}} <br>{{rating}} Stars<br>-- {{commentForm.value.author}} </p>
+    <form novalidate [formGroup]="commentForm" #fform="ngForm" (ngSubmit)="onSubmit()">
+      <mat-form-field class="full-width">
+        <input matInput formControlName="author" placeholder="Name" type="text" required>
+        <mat-error *ngIf="formErrors.author">
+          {{ formErrors.author }}
+        </mat-error>
+      </mat-form-field>
+      <mat-slider (input)="pitch($event)" thumbLabel value="5" tickInterval="1" min="1" max="5"></mat-slider>
+      <mat-form-field class="full-width">
+        <textarea matInput formControlName="comment" placeholder="Your Comments" rows="12" required></textarea>
+        <mat-error *ngIf="formErrors.comment">
+          {{ formErrors.comment }}
+        </mat-error>
+      </mat-form-field>
+      <button type="submit" mat-button class="background-primary text-floral-white"
+      [disabled]="commentForm.invalid">Submit</button>
+    </form>
   </div>
 
   <div fxFlex [hidden]="dish">  <!--if dishes is not null, then this div will be hidden. If dishes is null, then this div will be shown.-->
