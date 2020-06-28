@@ -62,8 +62,12 @@
     </form>
   </div>
 
-  <div fxFlex [hidden]="dish">  <!--if dishes is not null, then this div will be hidden. If dishes is null, then this div will be shown.-->
+  <div fxFlex [hidden]="dish || errMess">  <!--if dishes is not null, then this div will be hidden. If dishes is null, then this div will be shown.-->
     <mat-spinner></mat-spinner> <h4>Loding...  Please wait</h4>
+  </div>
+  <div fxFlex *ngIf="errMess">
+    <h2>Error</h2>
+    <h4>{{errMess}}</h4>
   </div>
 
 </div>
